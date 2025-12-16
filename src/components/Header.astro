@@ -1,0 +1,75 @@
+
+<header>
+	<nav>
+		<h2><a href="/"><img src="/10237164.png"></a></h2>
+		<div class="internal-links">
+            <a href="/">Home</a>
+			<a href="/about">Live-Data</a>
+			<a href="/blog">Tips for crop</a>
+			<button>Login</button>
+		</div>
+	</nav>
+</header>
+<style>
+	header {
+		position: sticky; 
+		top: 0; 
+		z-index: 1000; 
+		margin: 0;
+		padding: 0 1em;
+		background: rgb(5, 47, 5);
+		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		color: white;
+	}
+	header button{
+		height: 35px;
+		width:90px;
+		color: rgb(0, 0, 0);
+		background-color: yellow;
+		border-radius: 8px;
+		cursor: pointer;
+		border:none;
+		font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		transition: background-color 1s;
+	}
+	header button:hover{
+		color:white;
+		background-color: rgb(255, 0, 0);
+	}
+	}
+	h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+	}
+	nav img{
+		padding-top: 20px;
+		width: 80px;
+		height:50px
+	}
+	nav{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	nav a {
+		padding: 10px 14px;
+		color: var(--black);
+		border-bottom: 4px solid transparent;
+		text-decoration: none;
+        font-size: larger;
+	}
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: var(--accent);
+	}
+	
+	@media (max-width: 720px) {
+		.social-links {
+			display: none;
+		}
+	}
+</style>

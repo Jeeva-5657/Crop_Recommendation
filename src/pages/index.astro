@@ -1,0 +1,20 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<center><img src="https://premierag.com/wp-content/uploads/2024/04/Farming-Terms-Glossary-1200x675.jpg">
+			<h1>Crop Recommendation</h1></center>
+		</main>
+		<Footer />
+	</body>
+</html>
