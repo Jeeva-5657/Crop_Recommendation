@@ -55,7 +55,7 @@ const RechartsCharts = () => {
 
   return (
     <div style={{ width: "100%", padding: "2rem 0" }}>
-      <h2 style={{ textAlign: "center" }}>Live IoT Sensor Readings</h2>
+      <h1 style={{ textAlign: "center", fontSize: "2.5rem", marginBottom: "2rem" ,color: "green", fontWeight: "bold"}}>Live IoT Sensor Readings</h1>
       <ResponsiveContainer width="90%" height={400}>
         <LineChart data={sensorData} margin={{ top: 20, right: 40, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />

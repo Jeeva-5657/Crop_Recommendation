@@ -1,8 +1,10 @@
 ---
 import Header from '../components/Header.astro';
+import CropPredictionForm from '../components/Form.jsx';
 import Charts from '../components/Charts';
 ---
 <Header />
 <body>
-	<Charts client:visible/>
+        <CropPredictionForm client:load />
+	
 </body>
