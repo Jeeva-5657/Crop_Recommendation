@@ -3,6 +3,7 @@ import pandas as pd
 import joblib
 import random
 from flask_cors import CORS
+from flask import request
 
 # Flask app initialization
 app = Flask(__name__)
@@ -12,9 +13,17 @@ CORS(app)
 # Load trained model
 model = joblib.load("crop_recommendation_model.pkl")
 
+def predict_crop(input_data):
+    columns = ['Nitrogen', 'Phosphorus', 'Potassium', 'Temperature', 'Humidity', 'pH', 'Rainfall']
+    input_df = pd.DataFrame([input_data], columns=columns)
+
+    # Predict using model
+    prediction = model.predict(input_df)[0]
+    return prediction
+
 # API route to return prediction
 @app.route('/predict_crop', methods=['GET'])
-def predict_crop():
+def predict_iot_crop():
     # Random values generation (simulate sensor data)
     input_data = [
         random.uniform(0, 150),  # Nitrogen
@@ -28,15 +37,29 @@ def predict_crop():
 
     # Convert to DataFrame for prediction
     columns = ['Nitrogen', 'Phosphorus', 'Potassium', 'Temperature', 'Humidity', 'pH', 'Rainfall']
-    input_df = pd.DataFrame([input_data], columns=columns)
 
     # Predict using model
-    prediction = model.predict(input_df)[0]
+    prediction = predict_crop(input_data)
 
     return jsonify({
         "Predicted Crop": prediction,
         "Input Data": dict(zip(columns, input_data))
     })
+
+# Get the Crop details
+@app.route('/get-details',methods=["POST"])
+def get_Crop_details():
+    data = request.json
+    nitrogen=data["Nitrogen"]
+    phosphorus=data["Phosphorus"]
+    potassium=data["Potassium"]
+    temperature=data["Temperature"]
+    humidity=data["Humidity"]
+    ph=data["pH"]
+    rainfall=data["Rainfall"]
+    input_data=[nitrogen,phosphorus,potassium,temperature,humidity,ph,rainfall]
+    prediction = predict_crop(input_data)
+    return jsonify({"predicted_crop":prediction})
 
 # Run the Flask app
 if __name__ == '__main__':
